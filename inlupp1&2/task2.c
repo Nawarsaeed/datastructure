@@ -25,7 +25,7 @@ void push(stack_ptr *stack, int d)
 
 	if(new !=NULL){
 	new->data=d;  //Place a value in node
-	new->nextptr=*stack; //node does not link to another
+	new->nextptr=*stack;
 	*stack=new;
 }
 
@@ -50,7 +50,7 @@ double is_empty(stack_ptr sPtr)
 void print_list(stack_ptr stack)
 {
 	if (stack==NULL){
-	printf("The stack is Empty\n");
+	printf("The stack is Empty,underflow \n");
 }
 	else {
 	while(stack !=NULL)
@@ -62,55 +62,34 @@ void print_list(stack_ptr stack)
 }
 
 	}
-stack_ptr creat_stack(){
+stack_ptr create_stack(){
 
 	return NULL;
 	}
 
-void instructions(void){
-  printf("Enter choice:\n"
-        "1 to push a value\n"
-        "2 to pop a value\n"
-        "3 to end program");
-
-}
 
 
 int main (void)
 {
-	stack_ptr startptr=creat_stack();
-	int item;
+	stack_ptr startptr=create_stack();
+    //push some values
+    push(&startptr,1);
+		push(&startptr,2);
+		push(&startptr,3);
+    print_list(startptr); // print the values
 
-
-instructions();
-printf("%s","?");
-unsigned int choice;
-scanf("%u",&choice);
-
-while(choice !=3){
-  switch(choice){
-    case 1:
-    printf("enter an integer: ");
-		scanf("%d",&item);
-    push(&startptr,item);
-    print_list(startptr);
-    break;
-
-    case 2:
-    //if stack is not empty
+		//if not empty, then pop
     if(!is_empty(startptr)){
     printf("The popped value is %d.\n", pop(&startptr));
+		printf("The popped value is %d.\n", pop(&startptr));
+		printf("The popped value is %d.\n", pop(&startptr));
   }
   print_list(startptr);
-  break;
 
-   default:
-   printf("invaild choice\n");
-   instructions();
-   break;
-  }
-  printf("%s","?");
-  scanf("%u",&choice);
-}
-	printf("End of program\n");
+	printf("*******Use pop on an empty stack***\n");
+	stack_ptr startptr1=NULL;
+	print_list(startptr1);
+	printf("The popped value is %d.\n", pop(&startptr1));
+	print_list(startptr1);
+return 0;
 	}

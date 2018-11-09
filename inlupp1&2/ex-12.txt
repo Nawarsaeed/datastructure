@@ -1,0 +1,21 @@
+1) It will be the same efficiency for both because insertion sort only makes
+sequential accesses to the data that being sorted
+
+
+2) The linked list structures have better worst-case behavior, but may have a
+ worse overall runtime because of the number of allocations that performed.
+
+ When it comes to the array list structures, they are slower in the worst-case,
+but have better overall performance if the time per operation is not too important
+
+
+3) When it comes to linked list, so they are preferable over array when:
+   * You want to be able to insert an element in the middle of the list.
+   * You do not know how many items will be in the whole list.
+   * You do not need an indexed access to any element.
+
+  When it comes to arrays, so they are preferable over linked list when:
+  * You Know the number of elements that will be stored in the list, so
+    you can allocate the correct amount of memory for the array.
+  *You need indexed access to the elements.
+    

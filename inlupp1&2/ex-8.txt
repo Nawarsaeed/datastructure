@@ -1,0 +1,8 @@
+1)suppose that we have tow inactive queues A and B. We mark that A as an active queue.
+PUSH-function queues an element on A and it means that POP-function will dequeue
+all (except one element ) elements, and queue them on B. The next step is to make
+the roles of A and B reversed. The element left in the (now) inactive queue is returned.
+
+
+
+2)PUSH takes O(1), and POP takes O(n) where n is the number of elements in the stack .

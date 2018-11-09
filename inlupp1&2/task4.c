@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct queueNode{
+typedef struct queueNode{ //a struct for the queue node
 
 	int data;
 	struct queueNode * nextptr;
@@ -18,10 +18,14 @@ double is_empty(queueNodePtr sPtr);
 void print_list(queueNodePtr stack);
 
 
-
+/*This function is implemented to push items into the queue
+*@param headptr is a queue node poniter who points at the head
+*@param tailptr is a queue pointer who points at hte end
+*@param value is an inte variabel that data will be stored in
+*/
 void  enqueue(queueNodePtr *headptr, queueNodePtr *tailptr, int value)
 {
-    queueNodePtr  new = malloc(sizeof(QueueNode)); //create node
+  queueNodePtr  new = malloc(sizeof(QueueNode)); //create node
 
 	if(new !=NULL){
 	new->data=value;  //Place a value in node
@@ -37,11 +41,14 @@ void  enqueue(queueNodePtr *headptr, queueNodePtr *tailptr, int value)
 
 }
 else{
-  printf("%d not inserted, no memory available.\n",value );
+  printf("%d not inserted, no memory available(voerflow).\n",value );
 }
 
 }
-
+/*This function is implemented to delete items from the queue
+*@param headptr is a queue node poniter who points at the head
+*@param tailptr is a queue pointer who points at hte end 
+*/
 int dequeue(queueNodePtr *headptr, queueNodePtr *tailptr){
 	queueNodePtr temp= *headptr;
 	int value=(*headptr)->data;
@@ -64,7 +71,7 @@ double is_empty(queueNodePtr sPtr)
 void print_list(queueNodePtr queue)
 {
 	if (queue==NULL){
-	printf("The queue is Empty\n");
+	printf("The queue is Empty, underflow\n");
 }
 	else {
 	while(queue !=NULL)
@@ -81,52 +88,50 @@ queueNodePtr creat_queue(){
 	return NULL;
 	}
 
-void instructions(void){
-  printf("Enter choice:\n"
-        "1 to push a value\n"
-        "2 to pop a value\n"
-        "3 to end program");
+void queue(queueNodePtr head, queueNodePtr tail){
+
+	head,tail=creat_queue();
+
+
+		enqueue(&head,&tail,1);
+		enqueue(&head,&tail,2);
+		enqueue(&head,&tail,3);
+		enqueue(&head,&tail,4);
+		print_list(head);
+
+
+		//if the queue is not empty
+		if(!is_empty(head)){
+		printf("%d has been dequeued\n", dequeue(&head,&tail));
+		printf("%d has been dequeued\n", dequeue(&head,&tail));
+		printf("The updated queue contains:\n");
+		print_list(head);
 
 }
+}
+void emptyqueue(queueNodePtr head, queueNodePtr tail){
 
+		head,tail =creat_queue();
+		enqueue(&head,&tail,0);
+		dequeue(&head,&tail);
+		print_list(head);
+
+	}
 
 int main (void)
 {
-	queueNodePtr headptr=creat_queue();
-  queueNodePtr tailptr=creat_queue();
-	int item;
+
+	printf("*******Enqueue a few items and then dequeue them***\n" );
+		queueNodePtr headptr=creat_queue();
+	  queueNodePtr tailptr=creat_queue();
+		queue(headptr,tailptr);
 
 
-instructions();
-printf("%s","?");
-unsigned int choice;
-scanf("%u",&choice);
+  printf("*******Use pop on an empty stack***\n" );
+	queueNodePtr headptr1=creat_queue();
+  queueNodePtr tailptr1=creat_queue();
+  emptyqueue(headptr1, tailptr1);
 
-while(choice !=3){
-  switch(choice){
-    case 1:
-    printf("enter an integer: ");
-		scanf("%d",&item);
-    enqueue(&headptr,&tailptr,item);
-    print_list(headptr);
-    break;
+	return 0;
 
-    case 2:
-    //if stack is not empty
-    if(!is_empty(headptr)){
-      item=dequeue(&headptr,&tailptr);
-    printf("%d has been dequeued\n", item);
   }
-  print_list(headptr);
-  break;
-
-   default:
-   printf("invaild choice\n");
-   instructions();
-   break;
-  }
-  printf("%s","?");
-  scanf("%u",&choice);
-}
-	printf("End of program\n");
-	}

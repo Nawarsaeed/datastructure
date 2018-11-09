@@ -1,0 +1,4 @@
+The best solution of this problem is to use Dynamic arrays. It is an arraylist
+that resize itself as needed while still providing O(1) for each insert operation.
+The implementation of a dynamic array is when an array is full, so the array
+doubles in size. Each doubling takes O(n) time 

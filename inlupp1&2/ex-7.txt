@@ -1,0 +1,17 @@
+* An array is a random access data structure, where each element can be accessed
+directly and in constant time.
+
+* linked list is a sequential access data structure, where each element can be
+ accessed only in particular order.
+The differences between using linked lists or arrays for queues and stacks
+are the following:
+* The best reason to chose lists for implementing Stack is when you need a
+functionality involving LIFO form and you are not sure how many
+elements that functionality requires. So you would use Linked List creating 
+nodes dynamically depending on the requirement.
+
+Same goes for Queues. Implementing array based queue is better when it comes to
+preform a functionality involving FIFO and you know the the number of
+the elements that will be stored in the array.
+The reason both are independent is because both follow different principles
+LIFO and FIFO respectively.

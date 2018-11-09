@@ -1,0 +1,22 @@
+Q)Illustrate the operation of quick sort (step-by-step) on the input array
+ A = [3, 41, 52, 26, 38, 57, 9, 49].
+
+
+ A)
+ step 1	−	Make	the	right-most index	value	pivot (49)
+[3,41,52,26,38,57,9,(49)]
+
+step 2 - Partition	the	array	using	pivot value.
+
+The right array seems to be sorted.
+[3,41,9,26,(38)]     [49,52,57] %% pivot swapped 57,49
+
+step 3- The pivot of the left array is (38)
+
+[3] [26,9] [38,41]    [49][52][57]    %% pivot swapped 41,38
+
+[3][9][26][38][41]     [49][52][57]   %% pivot swapped 26,9
+and finally we have a sorted array
+
+
+[3,9,26,38,41,49,52,57]

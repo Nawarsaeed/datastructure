@@ -1,0 +1,8 @@
+1) suppose that we have tow stacks A and B.
+QUEUE pushes elements on B and DEQUEUE pops elements from A. If A is empty, so
+the contents of the stack B are moved to stack A by deleting them out of B and
+adding them to A. That way they appear in reverse order and are popped in the original one.
+
+2) The DEQUEUE of stack can perform in O(n), only if the stack is empty.
+   If many ENQUEUEs and DEQUEUEs are performed, so the total time will be
+   linear to the number of elements.

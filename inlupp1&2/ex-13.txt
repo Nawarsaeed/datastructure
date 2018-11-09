@@ -1,0 +1,27 @@
+Q)Illustrate the operation of merge sort (step-by-step) on the input array
+ A = [3, 41, 52, 26, 38, 57, 9, 49].
+
+
+ A) We	know	that	merge	sort	first	divides	the	whole	array	iteratively
+ into	equal	halves	unless the	atomic	values	are	achieved.
+ We	see	here	that	an	array	of	8	items	is	divided	into	two arrays
+of	size.
+[3,41,52,26] [38,57,9,49]
+Now	we	divide	these	two	arrays	into	halves.
+[3,41][52,26]     [38,57][9,49]
+
+We further divide	these	arrays and we	achieve	atomic value
+which	can	no more be divided.
+[3] [41]  [52]  [26]  [38]  [57]  [9] [49]
+
+We first compare the element for each	list and then
+combine	them into	another	list in a sorted manner.
+The whole process is done backwards
+[3,9] [26,38] [41,49] [52,57]
+
+[3,9,26,38] [41,49,52,57]
+
+and finally we have a sorted array 
+
+
+[3,9,26,38,41,49,52,57]

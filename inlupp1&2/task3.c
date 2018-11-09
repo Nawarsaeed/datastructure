@@ -4,9 +4,8 @@
 
 typedef struct stack_struct
 {
-	int indx;
 	int info[ARRAY];
-	int top;
+
 }Stackstruct;
 
 typedef Stackstruct * stack_ptr;
@@ -18,105 +17,126 @@ void create_stack(stack_ptr p){
 		p->info[i] = 0;
 		i++;}
 	}
-
+int isFull(stack_ptr p){
+	if (p->info[19] != 0) // medelanden om stacken är tom
+		{
+		printf("The stack is full!\nYour push function will be ignored!\n");
+		return 1; // retunerar 1 om listan är full
+		}
+}
 int push(stack_ptr p, int f){
 	int i = 19;
-
-	if (p->info[19] == 0){
-	while (i > 0){
+	if (isFull(p)){
+		return 1;
+	}
+else{
+	while (!isFull || i > 0 )
+		{
 	p->info[i] = p->info[i-1];
 	i--;}
-	p->info[0] = f;
-	return 0;}
-	else{
-		return 1;}
+	p->info[0] = f; 
 }
+	return f;
+	}
 
 
 int pop(stack_ptr p){
 	int i = 0;
-	if(p->info[0] != 0){
+	if(p->info[0] == 0 || p->info[0] != 0){
 		while (i < 19){
 			p->info[i] = p->info[i+1];
 			i++;}
-			p->info[19] = 0;}
+			p->info[19] = 0;
+		}
 
-	}
+return p->info[0];
+}
 
-  double is_empty(stack_ptr sPtr)
+
+int is_empty(stack_ptr sPtr)
   {
+
   	return sPtr==NULL;
+
   	}
+
+
 void print(stack_ptr p){
 	int i = 19;
 	int f = 0;
-	if (p->info[0] == 0){
+	if (is_empty(p)) // medelanden om stacken är tom
+		{
 		printf("The stack is empty!\nYour pop function will be ignored!\n");
 		}
-	if (p->info[19] != 0){
-		printf("The stack is full!\nYour push function will be ignored!\n");
-		}
+
 	while(p->info[i] == 0){
 		i--;}
 	while (f < (i+1)){
-		printf("%d\n",p->info[f]);
+		printf("%d->",p->info[f]);
 		f++;
 
 		}
 	}
-  void instructions(void){
-    printf("Enter choice:\n"
-          "1 to push a value\n"
-          "2 to pop a value\n"
-          "3 to end program");
 
-  }
+
 
 
 int main(void){
+
+
+
+
 	struct stack_struct s;
 	stack_ptr P = &s;
 	create_stack(P);
-	int item;
+printf("\n\n*******Push a few items and then pop them******\n\n" );
+printf("The pushed elements into the stack are:\n");
+      push(P,1);
+			push(P,7);
+			push(P,8);
+			push(P,11);
+			push(P,71);
+			push(P,82);
+			push(P,19);
+			push(P,78);
+			push(P,87);
+			push(P,16);
+			push(P,74); // the first pushed elemnet
 
-  instructions();
-  printf("%s","?");
-  unsigned int choice;
-  scanf("%u",&choice);
 
-  while(choice !=3){
-    switch(choice){
-      case 1:
-      printf("enter an integer: ");
-  		scanf("%d",&item);
-      push(P,item);
-      print(P);
-      break;
+  print(P);
 
-      case 2:
-      //if stack is not empty
       if(!is_empty(P)){
-      printf("The popped value is %d.\n", pop(P));
+
+      printf("\n\nThe stack is updated and the first item of the stack is %d\n ",pop(P));
     }
+		printf("\n\nThe new stack is:\n" );
     print(P);
-    break;
 
-     default:
-     printf("invaild choice\n");
-     instructions();
-     break;
-    }
-    printf("%s","?");
-    scanf("%u",&choice);
-  }
-  	printf("End of program\n");
-  	}
 
-/*
-	for(int i=1; i <argc;i++){
-	item=atof(argv[i]);
-	push(p,item);
-}
-	pop(p);
-	print(p);
-	return 0;}*/
+
+		printf("\n\n**********push another element on completely filled array *****\n\n" );
+		int item=100;
+		push(P,89);
+		push(P,90);
+		push(P,91);
+		push(P,92);
+		push(P,93);
+		push(P,94);
+		push(P,95);
+		push(P,96);
+		push(P,92);
+		push(P,93);
+		push(P,item); // the extra elemnet which will not be pushed into the stack
+		if(isFull){
+			printf("\nThe item %d will not be pushed into the stack\n",item);}
+		print(P);
+
+		struct stack_struct q;
+		stack_ptr k = NULL;
+		printf("\n\n*******Use pop on an empty stack******\n" );
+		print(k);
+		pop(k);
+		print(k);
+
+	}
