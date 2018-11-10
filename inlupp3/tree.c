@@ -201,9 +201,9 @@ int Depth(TreenodePtr N)
 
 
 
-rootptr addfromfile()
+void addfromfile()
 {
-  rootptr root;
+  rootptr root=malloc(sizeof(Root));
   root->rootnode=NULL;
   int item;
   char rad;
@@ -216,7 +216,7 @@ rootptr addfromfile()
 
 	if (fp == NULL){
 			 printf("Could not open file");
-			 return NULL;
+			 
 	 }
    fscanf(fp, "%d", &line);
    insertNode(root, Create_node(line));
@@ -277,7 +277,7 @@ Delete(root,line);
      }
 
 
-     TreenodePtr Position1=Iterative_search(root->rootnode,item);
+    
 
      printf("\n\nThe elemnet %d has been deleted\n",item);
      Delete(root, item);
@@ -289,7 +289,7 @@ Delete(root,line);
 
 
 
-int main(void)
+int main()
 {
 
 
@@ -299,74 +299,8 @@ int main(void)
   addfromfile();
 
 
-
-  /*
-    printf("\n\n*******Auto generated numbers********\n");
-      TreenodePtr rootptr=malloc(sizeof(Treenode));; //tree initially Empty
-      randnum(rootptr);
-  */
+return 0;
 
 }
 
 
-/*int randnum(TreenodePtr rootptr){
- int item;
- rootptr=NULL;
- //TreenodePtr Position=malloc(sizeof(Treenode));
- srand(time(NULL));
- printf("The inserted elemnets are:");
- for(int i=1; i<=10; i++){
-  item=rand()%30;
-   printf("%3d",item );
-   insertNode(rootptr,item);
- }
-
-
- printf("\n\nIn order is:");
- inorder(rootptr);
-
- printf("\n\nThe minimim key is:%d\n",minimum(rootptr)->data);
- printf("\n\nThe maximum key is:%d\n",maximum(rootptr)->data);
- printf("\n\nThe depth of the tree is: %d", Depth(rootptr));
- printf("\n\nThe size of the tree is: %d", size(rootptr));
-
-
-
- item=rand()%30;
- printf("\n\nThe searched elemnet %d",item );
- if(Iterative_search(rootptr,item) == NULL){
-   printf(" is not found in the list\n");
- }
- else{
-   printf(" is founded!\n");
-
-
-TreenodePtr Position=Iterative_search(rootptr,item);
-
-
-printf("\n\nThe Successor of %d is: ",item);
-if(item !=maximum(rootptr)->data){
-printf("%d\n",Successor(Position)->data);}
-else{
-  printf("There is no Successor after item %d\n",item );
-}
-
-
-printf("\n\nThe Predecessor of %d is: ",item);
-if(item !=minimum(rootptr)->data){
-  printf("%d\n",Predecessor(Position)->data);
-}
-else{
-  printf("There is no Predecessor before item %d\n",item );
-
-}
-
- printf("\n\nThe elemnet %d has been deleted\n",item);
- Delete(rootptr,Position);
-
-
-}
-printf("\n\nThe updated  inorder tree is:");
-inorder(rootptr);
-}
-*/

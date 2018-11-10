@@ -26,7 +26,7 @@ void dfs_visit(Graphptr g, int src, int visited[], int timez) {
 
 
 void dfs(Graphptr g) {
-
+	
 	g->cycle = 0;
 	int visited[g->totalVertices];
   int timez;
@@ -40,10 +40,11 @@ void dfs(Graphptr g) {
 		if(visited[d]==0){
 		dfs_visit(g, d, visited, timez);}
 	}
-	free(visited);
+	//free(visited);
 }
 
-void cycle(Graphptr g){
+void cycle(){
+	Graphptr g=NULL;
 	g = createGraph(4,Directed);
 	addEdge(g, 1, 3, 1);
 	addEdge(g, 3, 2, 1);
@@ -52,12 +53,13 @@ void cycle(Graphptr g){
 	addEdge(g, 2, 2, 1);
 	addEdge(g, 2, 3, 1);
 	printGraph(g);
-  dfs(g);
+    dfs(g);
 	printf("\nThe graph has %d cycles.\n", g->cycle);
 }
 
 
-void acycle(Graphptr g){
+void acycle(){
+	Graphptr g=NULL;
 	g = createGraph(4,Directed);
 	addEdge(g, 1, 2, 1);
 	addEdge(g, 1, 3, 1);
@@ -69,12 +71,12 @@ void acycle(Graphptr g){
 int main()
 {
 printf("********(Test(1): cycle graph)*********\n");
-    Graphptr cyclegraph;
+    Graphptr cyclegraph=NULL;
 		cycle(cyclegraph);
 
 
 printf("********(Test(2): acycle graph)*********\n");
-		Graphptr acyclegraph;
+		Graphptr acyclegraph=NULL;
 		acycle(acyclegraph);
 
 }

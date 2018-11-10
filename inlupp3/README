@@ -1,0 +1,8 @@
+In order to run all programs, you need to do the following steps
+
+	1)First, navigate to the build folder using (cd build).
+
+	2)Now you have to type the command (camke ..).
+	3)last step, type command (make).
+
+Now the program is located  in the build folder. To run the program, type (./tree). 

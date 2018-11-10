@@ -43,7 +43,7 @@ void enqueue(queue_ptr queue, int f){
 
 int dequeue(queue_ptr queue)
 {
-	int item;
+	
   if (isEmpty(queue)){
 
           printf("the queue is empty\n");
@@ -74,4 +74,5 @@ int printQueue(queue_ptr queue)
 							 printf("%d-> ", queue->array[i]);
 			 }
 	 }
+return 0;
 }

@@ -33,10 +33,12 @@ void push(stack_ptr *stack, int d)
 
 int pop(stack_ptr *stack)
 {
+	
 	stack_ptr temp= *stack;
 	int popvalue=(*stack)->data;
 	*stack=(*stack)->nextptr;
 	free(temp);
+	
 	return popvalue;
 
 	}
@@ -69,7 +71,7 @@ stack_ptr create_stack(){
 
 
 
-int main (void)
+int main ()
 {
 	stack_ptr startptr=create_stack();
     //push some values
@@ -87,9 +89,8 @@ int main (void)
   print_list(startptr);
 
 	printf("*******Use pop on an empty stack***\n");
-	stack_ptr startptr1=NULL;
-	print_list(startptr1);
-	printf("The popped value is %d.\n", pop(&startptr1));
+	stack_ptr startptr1= malloc(sizeof(Stackstruct));
+	pop(&startptr1);
 	print_list(startptr1);
 return 0;
 	}

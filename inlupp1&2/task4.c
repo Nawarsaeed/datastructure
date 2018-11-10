@@ -90,7 +90,8 @@ queueNodePtr creat_queue(){
 
 void queue(queueNodePtr head, queueNodePtr tail){
 
-	head,tail=creat_queue();
+	head=creat_queue();
+        tail=creat_queue();
 
 
 		enqueue(&head,&tail,1);
@@ -111,7 +112,8 @@ void queue(queueNodePtr head, queueNodePtr tail){
 }
 void emptyqueue(queueNodePtr head, queueNodePtr tail){
 
-		head,tail =creat_queue();
+		head  =creat_queue();
+                tail =creat_queue();
 		enqueue(&head,&tail,0);
 		dequeue(&head,&tail);
 		print_list(head);

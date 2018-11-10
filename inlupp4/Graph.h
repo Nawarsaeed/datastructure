@@ -135,7 +135,7 @@ int getNumEdges(Graphptr G){
 
 Nodeptr add_neighbors(Nodeptr y, int v)
 {
-  int weight;
+  
 	Nodeptr x = createNode(v,1);
 	x->next = y;
 	y = x;
@@ -164,24 +164,7 @@ return y;
 }
 
 
-Nodeptr getoutneighbors(Graphptr G, int v)
-{
 
-	Nodeptr y = malloc(sizeof(Node));
-
-	for( int i= 0; i < G->totalVertices; i++){
-		if(i == v){
-			Nodeptr temp = G->adjLists[i].head;
-			while(temp->next != NULL){
-					y = add_neighbors(y,i);
-				temp = temp->next;
-			}
-		}
-	}
-
-	return y;
-
-}
 void printGraph(Graphptr graph)
 {
     int i;

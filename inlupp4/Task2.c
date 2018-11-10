@@ -3,11 +3,12 @@
 
 #include "Graph.h"
 #include "Queue.h"
-/*This is the BFS-algorithem function
-*@param graph is is the graph
-*@param s is the starting Node
-*/
 
+/*This function is implemented to print a path
+*@param graph is a graph pointer
+*@param s is source
+*@param v is destnation
+*/
 void print_path(Graphptr graph, int s, int v)
 {
 
@@ -15,7 +16,7 @@ void print_path(Graphptr graph, int s, int v)
 		printf(" ");
 		}
 
-	if(graph->adjLists[v].pi == -1){
+	if(graph->adjLists[v].pi == 0){
 		printf("%d", v);
   }
 
@@ -26,13 +27,15 @@ void print_path(Graphptr graph, int s, int v)
 		}
 }
 
-
+/*This is the BFS-algorithem function
+*@param graph is is the graph
+*@param s is the starting Node
+*/
 void bfs(Graphptr graph, int s, int d)
 {
     int visited[graph->totalVertices];
     int i;
-    int w;
-    for (int i = 0; i < graph->totalVertices; i++){
+    for ( i = 0; i < graph->totalVertices; i++){
         visited[i] = 0;}
 
     queue_ptr queue=create_queue(graph->totalVertices);
@@ -40,8 +43,7 @@ void bfs(Graphptr graph, int s, int d)
     enqueue(queue, s);
     visited[s] = 1;
     graph->adjLists[s].distans=0;
-//    printf("%d\n", graph->adjLists[s].distans);
-//  printf("\nBFS:");
+
     while (!isEmpty(queue)) {
         int temp = dequeue(queue);
 //        printf("%d ", temp);
@@ -61,13 +63,9 @@ void bfs(Graphptr graph, int s, int d)
         }
     }
     free(queue);
-    print_path(graph, s, d);
+    //print_path(graph, s, d);
 }
-/*This function is implemented to print a path
-*@param G is a graph pointer
-*@param s is source
-*@param v is destnation
-*/
+
 
 
 int main()
@@ -81,7 +79,7 @@ int main()
 
 
 		int down_step = i + 10;
-    int up_step = i - 10;
+        int up_step = i - 10;
 		int right = i + 1;
 		int left = i - 1;
 
@@ -127,35 +125,10 @@ int main()
 
 	}
 
-	printGraph(G);
+	//printGraph(G);
 
-	bfs(G,0,5);
-	//print_path(G, 0, 5);
+	bfs(G,5,0);
+	print_path(G, 5, 0);
 	printf("\n");
   return 0;
 }
-
-/*
-}
-Graphptr g = createGraph(10,Undirected);
-  /*addEdge(g, 11, 21, 1);
-	addEdge(g, 1, 2, 1);
-	addEdge(g, 2, 3, 1);
-
-	addEdge(g, 3, 0, 1);
-	addEdge(g, 2, 4, 1);
-	addEdge(g, 4, 5, 1);
-
-	addEdge(g, 7, 0, 1);
-	addEdge(g, 5, 6, 1);
-	addEdge(g, 6, 7, 1);
-
-for(int i=(0,0); i<(0,5);i++) {
-  addEdge(g,i,i,1);
-}
-	printGraph(g);
-	bfs(g,0 );
-//  printf("\n\n%d\t%d\t%d\t%d\n", g->adjLists[4].distans,g->adjLists[4].pi, g->adjLists[2].distans, g->adjLists[2].pi);
-
-}
-*/

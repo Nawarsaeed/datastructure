@@ -20,28 +20,41 @@ void create_stack(stack_ptr p){
 int isFull(stack_ptr p){
 	if (p->info[19] != 0) // medelanden om stacken är tom
 		{
-		printf("The stack is full!\nYour push function will be ignored!\n");
-		return 1; // retunerar 1 om listan är full
+		
+		return 1;
 		}
+	return 0;
 }
 int push(stack_ptr p, int f){
 	int i = 19;
 	if (isFull(p)){
+		printf("The stack is full!\nYour push of %d function will be ignored!\n",f);
 		return 1;
 	}
-else{
-	while (!isFull || i > 0 )
+   if(!isFull(p)){
+	while (i > 0 )
 		{
 	p->info[i] = p->info[i-1];
 	i--;}
 	p->info[0] = f; 
 }
 	return f;
+	return 0;
 	}
+int is_empty(stack_ptr sPtr)
+  {
 
+  	return sPtr==NULL;
+
+  	}
 
 int pop(stack_ptr p){
 	int i = 0;
+	if (is_empty(p)) // medelanden om stacken är tom
+		{
+		printf("The stack is empty!\nYour pop function will be ignored!\n");
+		return 0;
+		}
 	if(p->info[0] == 0 || p->info[0] != 0){
 		while (i < 19){
 			p->info[i] = p->info[i+1];
@@ -53,21 +66,11 @@ return p->info[0];
 }
 
 
-int is_empty(stack_ptr sPtr)
-  {
 
-  	return sPtr==NULL;
-
-  	}
-
-
-void print(stack_ptr p){
+int print(stack_ptr p){
 	int i = 19;
 	int f = 0;
-	if (is_empty(p)) // medelanden om stacken är tom
-		{
-		printf("The stack is empty!\nYour pop function will be ignored!\n");
-		}
+	
 
 	while(p->info[i] == 0){
 		i--;}
@@ -76,6 +79,7 @@ void print(stack_ptr p){
 		f++;
 
 		}
+		return 0;
 	}
 
 
@@ -86,8 +90,8 @@ int main(void){
 
 
 
-	struct stack_struct s;
-	stack_ptr P = &s;
+	//struct stack_struct s;
+	stack_ptr P = malloc(sizeof(Stackstruct)); //&s;
 	create_stack(P);
 printf("\n\n*******Push a few items and then pop them******\n\n" );
 printf("The pushed elements into the stack are:\n");
@@ -125,18 +129,18 @@ printf("The pushed elements into the stack are:\n");
 		push(P,94);
 		push(P,95);
 		push(P,96);
-		push(P,92);
-		push(P,93);
+		push(P,97);
+		push(P,98);
+		push(P,98);
 		push(P,item); // the extra elemnet which will not be pushed into the stack
-		if(isFull){
-			printf("\nThe item %d will not be pushed into the stack\n",item);}
+		
 		print(P);
 
-		struct stack_struct q;
+		//struct stack_struct q;
 		stack_ptr k = NULL;
 		printf("\n\n*******Use pop on an empty stack******\n" );
-		print(k);
+		//print(k);
 		pop(k);
-		print(k);
+		//print(k);
 
 	}
