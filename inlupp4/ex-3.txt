@@ -1,3 +1,0 @@
-The DFS can be used to detect whether a directed graph contains a cycle or not
-by implementing an algorithm (DFS-VISIT) that checks if there is a back edge
-present in the graph. A back edge means a self-loop from a node to itself.

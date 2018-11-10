@@ -1,3 +1,0 @@
-Exercise 4:
-Depth-first search can be used to detect whether a directed graph contains 
-a cycle by checking if there is any back edge, if so it means that there are self-loops in the graph. 
