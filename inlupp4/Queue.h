@@ -3,7 +3,7 @@
 
 typedef struct queue_struct
 {
-	int *array;
+  int *array;
   int front;
   int rear;
   int capacity;
@@ -16,8 +16,6 @@ typedef Queuestruct * queue_ptr;
 queue_ptr create_queue(int p);
 void enqueue(queue_ptr queue, int f);
 int dequeue(queue_ptr queue);
-int isEmpty(queue_ptr queue);
-int isFull(queue_ptr queue);
 int printQueue(queue_ptr queue);
 
 queue_ptr create_queue(int p){
@@ -32,7 +30,7 @@ queue_ptr create_queue(int p){
 void enqueue(queue_ptr queue, int f){
   if (isFull(queue)){
           printf("The queue is full\n");
-					return;
+	return 0;
 
       }
 
@@ -46,8 +44,8 @@ int dequeue(queue_ptr queue)
 	
   if (isEmpty(queue)){
 
-          printf("the queue is empty\n");
-					return -1;
+      printf("the queue is empty\n");
+	return -1;
 
       }
 
@@ -64,14 +62,16 @@ int isFull(queue_ptr queue)
      return queue->rear == queue->capacity;
 }
 int printQueue(queue_ptr queue)
-		{
-			int i = queue->front;
-			if(isEmpty(queue)) {
-			 printf("Queue is empty");
-	 } else {
-			 printf("\nQueue contains \n");
-			 for(i = queue->front; i < queue->rear ; i++) {
-							 printf("%d-> ", queue->array[i]);
+{
+	int i = queue->front;
+	if(isEmpty(queue)) {
+	 printf("Queue is empty");
+	 }
+	else 
+	{
+	 printf("\n Queue contains \n");
+	for(i = queue->front; i < queue->rear ; i++) {
+	printf("%d-> ", queue->array[i]);
 			 }
 	 }
 return 0;
