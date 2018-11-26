@@ -23,7 +23,7 @@ queue_ptr create_queue(int p){
     queue->front =0;
     queue->rear = 0;
     queue->capacity = p;
-    queue->array =(int *) malloc(sizeof(int)*p);
+    queue->array = malloc(sizeof(Queuestruct));
     return queue;
 	}
 
